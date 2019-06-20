@@ -7,7 +7,7 @@ import kr.or.ddit.board.dao.BoardDao;
 import kr.or.ddit.board.service.BoardService;
 
 @Configuration
-public class ApplicationIockConfig {
+public class ApplicationIocConfig {
 
 	//<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
 	
