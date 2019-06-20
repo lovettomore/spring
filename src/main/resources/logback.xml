@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<!-- name을 아무렇게나 해도 상관없지만 보통은 패키지 이름으로 합니다. -->
+   <logger name="kr.or.ddit" level="debug">
+       <appender-ref ref="STDOUT" />
+   </logger> 
+   
+<!--    <logger name="kr.or.ddit.servlet" level="debug"> -->
+<!--        <appender-ref ref="STDOUT" /> -->
+<!--    </logger>  -->
+
+</configuration>
