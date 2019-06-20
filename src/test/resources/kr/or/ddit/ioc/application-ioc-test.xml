@@ -6,14 +6,25 @@
 	<!-- 
 		스프링 컨테이너에서 관리하고자 하는 빈을 등록
 		boardService 등록. boardService를 등록하기 위해서는 boardDao필요. 먼저 Dao bean을 등록
+		
+		IbaordDao boardDao = new BoardDao();
+		iboardService boardService = new BoardService();
+		
+		boardService에 대해서 instance가 2개가 생긴거에요
 	-->
-	
-	<!-- IbaordDao boardDao = new BoardDao(); --> 
 	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
 	
-	<!-- iboardService boardService = new BoardService(); -->
+	<!-- prototype scope boardDao 얘는 요청을 할때마다 스프링 객체가 새로운 객체를 만들어 주는거에요 -->
+	<bean id="boardDaoPrototype" class="kr.or.ddit.board.dao.BoardDao" scope="prototype"/>
+	
 	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
 		<!-- boardDao 필드에 아래의 bDao 스프링 빈을 주입 -->
+		<!-- setter injection -->
 		<property name="boardDao" ref="boardDao"/>
+	</bean>
+	
+	<bean id="boardServiceConstructor" class="kr.or.ddit.board.service.BoardService">
+		<!-- constructor injection 기본생성자 -->
+		<constructor-arg ref="boardDao"/>
 	</bean>
 </beans>
