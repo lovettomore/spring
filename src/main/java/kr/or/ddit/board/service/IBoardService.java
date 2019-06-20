@@ -7,5 +7,6 @@ public interface IBoardService {
 	String sayHello();
 
 	IBoardDao getBoardDao();
+	
 
 }
