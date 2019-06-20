@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		VO객체는 값을 운반하는 목적의 객체이기 때문에 스프링 빈으로 등록하는 경우는 거의 없다.
+		해당 설정 파일을 date필드의 값을 주입하는 예제를 위해 VO객체를 스프링 빈으로 등록한다.
+	-->
+	
+	<bean id="userVO" class="kr.or.ddit.user.model.UserVO">
+		<!-- userId 속성에 brown값을 stter 주입한다. -->
+		<property name="userId" value="brown"/>
+		<property name="birth" value="2019- 08-08"/>
+	</bean>
+	
+	<!-- id는 conversionService로 고정이 되어있다. 스프링 내부에서 사용 -->
+<!-- 	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"> -->
+<!-- 		<property name="converters"> -->
+<!-- 			<set> -->
+<!-- 				<bean class="kr.or.ddit.typeConvert.StringDateConverter"> -->
+<!-- 					<property name="pattern" value="MM-dd-yyyy"></property> -->
+<!-- 				</bean> -->
+<!-- 			</set> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<bean class="kr.or.ddit.typeConvert.CustomDateRegistry"/>
+			</list>
+		</property>
+	</bean>
+
+</beans>
