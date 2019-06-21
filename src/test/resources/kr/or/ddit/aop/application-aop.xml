@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 공통의 관심사항 -->
+	<bean id="loggingAspect" class="kr.or.ddit.aop.LoggingAspect"/>
+	
+	<!-- 공통의 관심사항 : profoilingAspect - service 클래스의 메소드들이 실행될 때 메소드의 실행 시간을 구한다. -->
+	<bean id="profilingAspect" class="kr.or.ddit.aop.ProfilingAspect"/>
+	
+	<!-- @Controller, @Service, @Respository, @Component 4가지 어노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
+	<context:component-scan base-package="kr.or.ddit">
+		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+	</context:component-scan>
+	
+	<context:annotation-config/>
+	
+	<aop:config>
+		<!-- 
+		
+			모든 서비스 메소드 들에 대해서 loggingAspect를 적용하고자 한다.
+			서비스 메소드는 ServiceImple.java
+			kr.or.ddit.user.service
+			kr.or.ddit.board.service
+			kr.or.ddit.board.manger.service
+			kr.or.ddit.board.member.service
+		
+			<aop:pointcut id="target" expression="within(kr.or.ddit..service.*)"/>
+			어떤메소드에 적용할지 표현하는것이 가능함 
+			..은 하위패키지가 몇개가 올지 모르기 때문에 점 두개로 표현, 패키지가 몇개가와도 상관없다는것을 표시
+			
+			execution : 접근제어자 (생략이 가능. spring public) public 명시 또는 생략	
+						반환타입 - 패키지 - 클래스 - 메소드 - 메소드 인자 >
+			
+		-->
+		
+		<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))"/> 
+		
+		<aop:aspect ref="loggingAspect">
+			<aop:before pointcut-ref="target" method="before"/>
+			<aop:after pointcut-ref="target" method="after"/>
+			<aop:around pointcut-ref="target" method="around"/>
+		</aop:aspect>	
+		
+		<aop:aspect ref="profilingAspect">
+			<aop:around pointcut-ref="target" method="around"/>
+		</aop:aspect>
+		
+	</aop:config>
+
+
+</beans>
