@@ -1,0 +1,32 @@
+@charset "UTF-8";
+@import url(//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css);
+
+
+
+* {margin:0; padding:0; font-family: 'Nanum Square'; font-size:0.8em}
+
+#wrap {}
+#wrap .container {width:1000px; margin:100px auto 0}
+
+#hdTitle {text-align:center; border-bottom:1px dashed #e1e1e1; padding-bottom:20px}
+#hdTitle span {display:block; color:#e59eb7}
+#hdTitle h2 {font-weight:300; font-size:37px; color:#333; margin:10px 0 10px}
+#hdTitle p {font-size:15px; color:#666}
+
+
+#contents {}
+.loginForm {width:350px; margin:50px auto}
+.loginForm p {margin-bottom:5px}
+.loginForm p label {display:none;}
+.loginForm p input {width:100%; height:35px; border:1px solid #e1e1e1; border-radius:3px; padding:0 20px; box-sizing:border-box}
+.loginForm p input[type=submit] {background:#212121; color:#fff; border:none}
+
+input[type=text] {width:80%; height:32px; border:1px solid #e1e1e1; padding:0 20px}
+
+table {width:600px; margin:50px auto;}
+table th {border-top:1px dashed #e1e1e1; border-bottom:1px dashed #e1e1e1; padding:8px 0}
+table td {border-bottom:1px dashed #e1e1e1; padding:8px 0; text-align:center}
+
+.ex {width:800px; margin:30px auto 30px; border:1px dashed #e1e1e1; padding:20px; font-size:15px; line-height:1.8em; color:#555}
+
+.btn_style_01 {width:100%; height:35px; background:#444; color:#fff}

@@ -5,5 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- @Controller, @Service, @Repository, @Component 얘를 기본적으로 스캔을 합니다 -->
+	<!-- @Service, @Repository  -->
 	<context:component-scan base-package="kr.or.ddit"/>
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+      <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+      <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+   </context:component-scan>
+	
 </beans>

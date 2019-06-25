@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+body {background:#fff}
+
+.wrapper .mainWrapper {width:800px; height:600px; margin:100px auto; background:url("images/404.gif") no-repeat;}

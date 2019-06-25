@@ -18,10 +18,10 @@ import kr.or.ddit.board.service.IBoardService;
 public class SpringIocStTest {
 
 	//테스트 하려는 Dao와 Service를 resource로 주입을 받아용.
-	@Resource(name="bDao")
+	@Resource(name="boardDao")
 	private IBoardDao boardDao;
 	
-	@Resource(name="bService")
+	@Resource(name="boardService")
 	private IBoardService boardService;
 		
 	@Test

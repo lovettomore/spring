@@ -63,5 +63,25 @@ public class UserServiceTest extends LogicTestEnv{
 		
 		userService.deleteUser(userVO.getUserId());
 	}
+	
+	/**
+	 * 
+	* Method 		: userListTest
+	* 작성자 			: 
+	* 변경이력 		:
+	* Method 설명 	: 특정 사용자 조회 테스트
+	 */
+	@Test
+	public void getUserTest() {
+		/***Given***/
+		String userId = "brown";
+		
+		/***When***/
+		UserVO userVO = userService.getUser(userId);
+		
+		/***Then***/
+		assertEquals("brown", userVO.getUserId());
+		assertEquals("brown", userVO.getUserId());
+	}
 
 }

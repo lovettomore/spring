@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 	ex) @Controller만 스캔
 */
 @Configuration
-@ComponentScan(basePackages = {"kr.or.ddit"}, useDefaultFilters = true)
+@ComponentScan(basePackages = {"kr.or.ddit.board", "kr.or.ddit.aop"}, useDefaultFilters = true)
 public class ApplicationIocBeanScanConfig {
 
 }
