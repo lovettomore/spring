@@ -24,7 +24,7 @@
 		
 		//싱글쿼터로 안묶으면  var msg = 중복된 아이디 입니다.; 이케 되는거임
 		
-		var msg = "${msg}";
+		var msg = "${msg1}";
 		if(msg != '') alert(msg);
 		
 		
@@ -82,7 +82,7 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 수정</h2>
 						
-						<form id="frm" class="form-horizontal" action="${cp}/userModify" enctype="multipart/form-data" method="post" role="form">
+						<form id="frm" class="form-horizontal" action="${cp}/user/modify" enctype="multipart/form-data" method="post" role="form">
 							
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
@@ -103,12 +103,12 @@
 								</div>
 							</div>
 							
-							<div class="form-group">
-								<label for="pass" class="col-sm-2 control-label">사용자 비밀번호</label>
-								<div class="col-sm-10">
-									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호를 입력하세요." value="${userVO.pass}">
-								</div>
-							</div>
+<!-- 							<div class="form-group"> -->
+<!-- 								<label for="pass" class="col-sm-2 control-label">사용자 비밀번호</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<%-- 									<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호를 입력하세요." value="${userVO.pass}"> --%>
+<!-- 								</div> -->
+<!-- 							</div> -->
 
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">사용자 이름</label>

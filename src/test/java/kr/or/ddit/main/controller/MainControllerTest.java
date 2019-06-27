@@ -41,15 +41,15 @@ public class MainControllerTest extends ControllerTestEnv {
 		assertEquals("brown", userId);
 	}
 	
-	@Test
-	public void mainViewAndExpectTest() throws Exception {
-		mockMvc.perform(get("/main")).andExpect(status().isOk())
-									 .andExpect(view().name("main"))
-									 .andExpect(model().attribute("mainUserId", "brown"))
-									 .andExpect(model().attributeExists("rangers"))
-									 .andExpect(model().attributeExists("userVO"));
-		
-	}
+//	@Test
+//	public void mainViewAndExpectTest() throws Exception {
+//		mockMvc.perform(get("/main")).andExpect(status().isOk())
+//									 .andExpect(view().name("main"))
+//									 .andExpect(model().attribute("mainUserId", "brown"))
+//									 .andExpect(model().attributeExists("rangers"))
+//									 .andExpect(model().attributeExists("userVO"));
+//		
+//	}
 	
 	/**
 	 * 

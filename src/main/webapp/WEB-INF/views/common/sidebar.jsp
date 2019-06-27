@@ -2,10 +2,10 @@
 
 <div class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
-		<li><a href="${cp}/main.jsp">Main <span class="sr-only">(current)</span></a></li>
-		<li><a href="${cp}/userList">user List</a></li>
-		<li><a href="${cp}/userPagingList">user Paging List</a></li>
-		<li><a href="${cp}/myFilePagingList">memeber List</a></li>
-		<li><a href="${cp}/ddit204MemberList">list04</a></li>
+		<li><a href="${cp}/main">Main <span class="sr-only">(current)</span></a></li>
+		<li><a href="${cp}/user/list">user List</a></li>
+		<li><a href="${cp}/user/pagingList">user Paging List</a></li>
+		<li><a href="${cp}/lprod/pagingList">lprod Paging List</a></li>
+		<li><a href="${cp}/prod/pagingList">prod Paging List</a></li>
 	</ul>
 </div>

@@ -82,7 +82,6 @@ public class UserServiceTest extends LogicTestEnv{
 		
 		/***Then***/
 		assertEquals("brown", userVO.getUserId());
-		assertEquals("brown", userVO.getUserId());
 	}
 	
 	/**
@@ -101,7 +100,7 @@ public class UserServiceTest extends LogicTestEnv{
 		
 		/***When***/
 		@SuppressWarnings("unchecked")
-		List<UserVO> userList = (List<UserVO>) userService.userPagingList(pageVO);
+		List<UserVO> userList = (List<UserVO>) userService.userPagingList(pageVO).get("userList");
 
 		/***Then***/
 		assertNotNull(userList);

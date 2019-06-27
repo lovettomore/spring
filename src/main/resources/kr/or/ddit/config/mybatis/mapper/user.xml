@@ -49,7 +49,7 @@
 		UPDATE USERS SET 
 				NAME		= #{name},
 				ALIAS 		= #{alias},
-				PASS 		= #{pass},
+<!-- 				PASS 		= #{pass}, -->
 				ADDR1 		= #{addr1},
 				ADDR2 		= #{addr2},
 				ZIPCD 		= #{zipcd},

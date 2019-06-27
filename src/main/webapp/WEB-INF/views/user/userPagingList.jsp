@@ -48,7 +48,7 @@
 						<div class="table-responsive">
 						
 							<!-- 사용자 상세조회 : userId가 필요 -->
-							<form action="${cp}/user" method="get" id="frm">
+							<form action="${cp}/user/user" method="get" id="frm">
 								<input type="hidden" id="userId" name="userId">
 							</form>
 							
@@ -72,7 +72,7 @@
 							</table>
 						</div>
 
-						<a href="${cp}/userForm" class="btn btn-default pull-right" >사용자 등록</a>
+						<a href="${cp}/user/form" class="btn btn-default pull-right" >사용자 등록</a>
 						
 						
 						<!-- 
@@ -88,7 +88,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="${cp}/userPagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
+											<a href="${cp}/user/pagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -104,7 +104,7 @@
 										</c:when>
 										<c:otherwise>
 											<li>
-												<a href="${cp}/userPagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
+												<a href="${cp}/user/pagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -116,7 +116,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="${cp}/userPagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
+											<a href="${cp}/user/pagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
 										</li>
 									</c:otherwise>
 								</c:choose>

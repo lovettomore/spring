@@ -7,7 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,6 +17,8 @@ import kr.or.ddit.user.model.UserVO;
 
 
 public class LoginControllerTest extends ControllerTestEnv{
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginControllerTest.class);
 	
 	/**
 	 * 
@@ -85,6 +88,7 @@ public class LoginControllerTest extends ControllerTestEnv{
 		UserVO userVO = (UserVO) session.getAttribute("USER_INFO");
 
 		/***Then***/
+		logger.debug("userVO : {}", userVO);
 		assertEquals("main", viewName);
 		assertEquals("브라운 이녀석", userVO.getName());
 	}

@@ -26,7 +26,6 @@
 </script>
 </head>
 
-	
 <body>
 	
 <div class="container-fluid">
@@ -38,18 +37,15 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 상세 조회</h2>
 							
-						<form id="frm" class="form-horizontal" action="${cp}/userModify" method="get" role="form">
+						<form id="frm" class="form-horizontal" action="${cp}/user/modify" method="get" role="form">
 							<input type="hidden" id="userId" name="userId" value="${userVO.userId}">
 						
 							<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
-									<img src="${cp}/profile?userId=${userVO.userId}" style="width:150px">
+									<img src="${cp}/user/profile?userId=${userVO.userId}" style="width:150px">
 								</div>
 								<label for="userNm" class="col-sm-2 control-label"></label>
-								<div class="col-sm-10">
-									${msg}
-								</div>
 							</div>
 							
 							<div class="form-group">

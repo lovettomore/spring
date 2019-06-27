@@ -44,7 +44,7 @@
 		});
 		
 		//개발용 데이터 초기화 함수 ****** 추후 지울것 ******
-		//dataInit();
+		dataInit();
 		
 		//사용자 등록 클릭버튼 클릭 이벤트 핸들러 
 		$("#btnUserReg").on("click", function(){
@@ -58,7 +58,7 @@
 	});
 	
 	function dataInit(){
-		$("#userId").val("lovettomore");
+		$("#userId").val("lovememore");
 		$("#pass").val("love1234");
 		$("#name").val("박서경");
 		$("#alias").val("또굥이");
@@ -82,7 +82,7 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자 등록</h2>
 						
-						<form id="frm" class="form-horizontal" action="${cp}/userForm" method="post" enctype="multipart/form-data" role="form">
+						<form id="frm" class="form-horizontal" action="${cp}/user/form" method="post" enctype="multipart/form-data" role="form">
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
