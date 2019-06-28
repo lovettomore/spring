@@ -9,10 +9,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import kr.or.ddit.main.model.MainVO;
+import kr.or.ddit.user.model.UserVO;
 
 /*
 	servlet		- extends HttpServlet
@@ -104,11 +109,55 @@ public class MainController {
 	 */
 	@RequestMapping("/main/header")
 	public String header(@RequestHeader(name = "Accept"/*, required = false*/) String accept) {
-		
 		logger.debug("Accepth :::::::::: {}", accept);
 		return "main";
 	}
 	
+	@RequestMapping("/main/view")
+	public String view() {
+		return "view";
+	}
+	
+	@RequestMapping("/main/process")
+	public String process(HttpServletRequest request, String[] userId, String[] name, @RequestParam("userId")List<String> userIdList, MainVO mainVO, @RequestParam("name")List<String> names) {
+		
+		//복수개의 파라미터 보내기
+		//list 할때는 requestParam을 붙여야 합니당.
+
+		String[] userIdArr = request.getParameterValues("userId");
+		
+		String userIdParameter = request.getParameter("userId");
+		logger.debug("userIdParameter : {}", userIdParameter);
+		
+		
+		logger.debug("request.getParameterValues(\"userId\")");
+		for(String u : userIdArr) {
+			logger.debug("userId : {}", u);
+		}
+		
+		logger.debug("String[] userId");
+		for(String u : userId) {
+			logger.debug("userId : {}", u);
+		}
+		
+		logger.debug("userIdList");
+		for(String u : userIdList) {
+			logger.debug("userIdList : {}", u);
+		}
+		
+		
+		logger.debug("mainVO");
+		for(String u : mainVO.getUserId()) {
+			logger.debug("mainVO.getUserId() : {}", u);
+		}
+		
+		logger.debug("mainVO :::::::::::: {}", mainVO);
+		logger.debug("mainVO :::::::::::: {}", mainVO.getName());
+		logger.debug("mainVO :::::::::::: {}", mainVO.getName().get(0));
+		logger.debug("mainVO :::::::::::: {}", mainVO.getUserId());
+		
+		return "main";
+	}
 }
 
 
