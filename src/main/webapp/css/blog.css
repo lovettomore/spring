@@ -168,3 +168,6 @@ h6, .h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+.errors {margin-top:4px;}
+.errors span {color:#bb2929; font-size:15px}

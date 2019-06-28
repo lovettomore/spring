@@ -72,8 +72,10 @@
 							</table>
 						</div>
 
-						<a href="${cp}/user/form" class="btn btn-default pull-right" >사용자 등록</a>
-						
+						<div class="btn_wrapper" style="float:right; width:100%; margin-bottom:20px">
+							<a href="${cp}/user/form" class="btn btn-default pull-right" style="margin-left:5px">사용자 등록</a> 
+							<a href="${cp}/user/userListExcel" class="btn btn-default pull-right" >EXCEL DOWNLOAD</a>
+						</div>
 						
 						<!-- 
 								사용자 수 		: 105건 

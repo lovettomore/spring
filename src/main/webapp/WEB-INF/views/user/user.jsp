@@ -18,6 +18,10 @@
 <script>
 	$(document).ready(function(){
 		
+		<c:if test="${not empty msg}">
+			alert("${msg}");
+		</c:if>
+		
 		//사용자 등록 클릭버튼 클릭 이벤트 핸들러 
 		$("#btnUserModify").on("click", function(){
 			$("#frm").submit();

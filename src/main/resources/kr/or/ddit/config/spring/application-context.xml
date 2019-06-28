@@ -7,18 +7,57 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-
+	<!-- @Controller, @Service, @Repository, @Component 4가지를 스캔을 다 안하고 include-filter만 스캔을 하겠다라는거에용 -->
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
    
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	
+	<!-- 
+		얘는 복수개의 viewResolver를 사용할 경우 우선순위를 가장 늦게 배정 함.
+		viewName이 유효한지(존재하는지)와 관계없이 무조건 처리함. jsp가 있건 없건 무조건 처리 
+	-->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/> <!-- 접두 -->
 		<property name="suffix" value=".jsp"/> <!-- 접미 -->
+		<property name="order" value="2"/>
 	</bean>
+	
+	<!-- controller를 리턴하는 view 이름과 동일한 spring bean이 존재하면 해당 view에 위임 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="1"/>
+	</bean>
+	
+	<!-- 
+			1. 만약에 컨트롤러의 어느 메소드가 예를들면 user/user라는 view 네임을 리턴했다고 가정하자
+			그러면 얘는 우선순위에 따라 beanNameResolver가 "user/user"와 동일한 spring bean이 있는지 확인을 합니다. : 없음을 확인함
+			없는것을 확인 후 우선순위에 따라 internalResourceViewResolver가 prefix + "user/user" + surffix로 forward함.
+			
+			2. 만약에 컨트롤러 메소드가 뷰네임을 jsonView라고 리턴을 해요
+			그러면 일단 똑같겠죠. 우선순위에 따라 beanNameResolver가 "jsonView"와 동일한 spring bean이 있는지 확인을 합니다. : 바로 아래 있죠?
+			그러면 해당 springBean(view)에게 응답을 생성하도록 요청을 합니다.
+			
+			어떤 데이터에 대해서 jsonView를 만들지 집중을 하면 됩니다. 나머지는 알아서 해주니까요.
+			일단 interceptor를 꺼둘게요, 서버가 켜질때 interceptor가 켜지지 않게. 
+			
+			3. 컨트롤러 메소드가 profileView라는 viewName을 리턴을 해요.
+			우선순위에 따라 beanNameResolver가 "profileView"와 동일한 spring bean이 있는지 확인을 합니다. 아래 있죠?
+			그러면 해당 springBean(view)에게 응답을 생성하도록 요청을 합니다.
+			
+	 -->
+	
+	<!-- controller에서 model객체에 넣은 속성을 이용하여 응답을 json으로 만들어주는 view -->
+	<bean id ="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+	
+	<!-- profile 이미지를 처리해주는 view -->
+	<bean id ="profileView" class="kr.or.ddit.view.ProfileView"/>
+	
+	<!-- 사용자 엑셀 정보를 처리해주는 view -->
+	<bean id="userExcelView" class="kr.or.ddit.view.ExcelDownloadView"/>
+	
 	
 	<!-- multipart resolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -26,4 +65,12 @@
 		<property name="maxUploadSize" value="15728640"/>
 	</bean>
 	
+	<!-- messageSource -->	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/msg/error</value>
+			</list>
+		</property>
+	</bean>
 </beans>

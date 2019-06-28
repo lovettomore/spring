@@ -2,7 +2,9 @@
 <%@page import="kr.or.ddit.user.model.UserVO"%>
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -97,7 +99,7 @@
 								</div>
 								<label for="userId" class="col-sm-2 control-label"></label>
 								<div class="col-sm-10">
-									<span>${msg}</span>
+									<p class="errors"><form:errors path="userVO.userId"/></p>
 								</div>
 							</div>
 							
@@ -111,7 +113,11 @@
 							<div class="form-group">
 								<label for="name" class="col-sm-2 control-label">사용자 이름</label>
 								<div class="col-sm-10">
-								<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요." value="${param.name}">
+									<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요." value="${param.name}">
+								</div>
+								<label for="userId" class="col-sm-2 control-label"></label>
+								<div class="col-sm-10">
+									<p class="errors"><form:errors path="userVO.name"/></p>
 								</div>
 							</div>
 							
