@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="layout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="sidebar" value="/WEB-INF/views/common/sidebar.jsp"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<!-- main 위의 layout을 상속받음 -->
+	<definition name="tiles.main" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/views/main.jsp"/>
+	</definition>
+	
+	<!-- main 위의 layout을 상속받음 -->
+	<definition name="tiles.userPagingList" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/views/user/userPagingList.jsp"/>
+	</definition>
+
+</tiles-definitions>

@@ -49,7 +49,7 @@ public class MainController {
 		//request.setAttribute("mainUserId", "brown");
 		
 		//이녀석이 viewName이에요.
-		return "main";
+		return "tiles.main";
 	}
 	
 	/*

@@ -93,7 +93,7 @@ public class UserController {
 		model.addAttribute("paginationSize", paginationSize);
 		model.addAttribute("pageVO", pageVO);
 		
-		return "user/userPagingList";
+		return "tiles.userPagingList";
 	}
 	
 	@RequestMapping("/userListExcel")

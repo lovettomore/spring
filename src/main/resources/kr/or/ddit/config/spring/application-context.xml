@@ -19,20 +19,40 @@
 	<!-- 
 		얘는 복수개의 viewResolver를 사용할 경우 우선순위를 가장 늦게 배정 함.
 		viewName이 유효한지(존재하는지)와 관계없이 무조건 처리함. jsp가 있건 없건 무조건 처리 
+		
+		* 20190628 *
+		에러가 발생할 경우가 높은거죠, 그래서 후순위로 뺄꺼에요 
 	-->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/> <!-- 접두 -->
 		<property name="suffix" value=".jsp"/> <!-- 접미 -->
-		<property name="order" value="2"/>
+		<property name="order" value="3"/>
 	</bean>
 	
 	<!-- controller를 리턴하는 view 이름과 동일한 spring bean이 존재하면 해당 view에 위임 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"/>
+	</bean>
+	
+	<!-- tiles view resolver -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="1"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
 	</bean>
 	
 	<!-- 
 			1. 만약에 컨트롤러의 어느 메소드가 예를들면 user/user라는 view 네임을 리턴했다고 가정하자
+			
+			* 수정 *
+			우선순위에 따라 tilesViewResolver가 user/user와 동일한 tilesdefinition이 있는지 확인을 하고 없을을 확인 한 후 다음으로 넘어감. 다음은 viewResolver
+			
 			그러면 얘는 우선순위에 따라 beanNameResolver가 "user/user"와 동일한 spring bean이 있는지 확인을 합니다. : 없음을 확인함
 			없는것을 확인 후 우선순위에 따라 internalResourceViewResolver가 prefix + "user/user" + surffix로 forward함.
 			
@@ -46,6 +66,10 @@
 			3. 컨트롤러 메소드가 profileView라는 viewName을 리턴을 해요.
 			우선순위에 따라 beanNameResolver가 "profileView"와 동일한 spring bean이 있는지 확인을 합니다. 아래 있죠?
 			그러면 해당 springBean(view)에게 응답을 생성하도록 요청을 합니다.
+			
+			4. 컨트롤러 메소드가 main이라는 viewName을 리턴
+			우선순위에 따라 tilesViewResolver가 tiles설정파일에서 main이라는 이름으로 name이름을 찾아서 defination이 있는지 확인을하고 : 아래쪽에 있음
+			
 			
 	 -->
 	

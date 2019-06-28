@@ -169,5 +169,7 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
+.userTr td {cursor:pointer}
+
 .errors {margin-top:4px;}
 .errors span {color:#bb2929; font-size:15px}
