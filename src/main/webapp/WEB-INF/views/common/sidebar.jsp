@@ -5,6 +5,7 @@
 		<li><a href="${cp}/main">Main <span class="sr-only">(current)</span></a></li>
 		<li><a href="${cp}/user/list">user List</a></li>
 		<li><a href="${cp}/user/pagingList">user Paging List</a></li>
+		<li><a href="${cp}/user/pagingListAjaxView">user Paging List ajax</a></li>
 		<li><a href="${cp}/lprod/pagingList">lprod Paging List</a></li>
 		<li><a href="${cp}/prod/pagingList">prod Paging List</a></li>
 	</ul>

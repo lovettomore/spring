@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.ibatis.annotations.ResultMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -96,6 +97,53 @@ public class UserController {
 		return "tiles.userPagingList";
 	}
 	
+	
+	
+	/**
+	 * 
+	* Method 		: pagingListAjax
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param pageVO
+	* @param model
+	* @return
+	* Method 설명 	: 사용자 페이징 리스트 ajax 처리
+	 */
+	@RequestMapping("/pagingListAjax")
+	public String pagingListAjax(PageVO pageVO, Model model) {
+		
+		model.addAttribute("data", userService.userPagingList(pageVO));
+		return "jsonView";
+	}
+	
+	
+	@RequestMapping("/pagingListAjaxHtml")
+	public String pagingListAjaxHtml(PageVO pageVO, Model model) {
+		
+		model.addAttribute("data", userService.userPagingList(pageVO));
+		return "user/userPagingListAjaxHtml";
+		
+	}
+	
+	
+	
+	@RequestMapping("/pagingListAjaxView")
+	public String pagingListAjaxView(Model model) {
+		return "tiles.pagingListAjaxView";
+	}
+	
+	
+	
+	/**
+	 * 
+	* Method 		: userListExcel
+	* 작성자 			: chewoop
+	* 변경이력 		:
+	* @param model
+	* @param request
+	* @return
+	* Method 설명 	:
+	 */
 	@RequestMapping("/userListExcel")
 	public String userListExcel(Model model, HttpServletRequest request) {
 		
