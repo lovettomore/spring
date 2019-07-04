@@ -5,6 +5,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.or.ddit.encrypt.kisa.KISA_SHA256;
 import kr.or.ddit.user.model.UserVO;
 import kr.or.ddit.user.service.IUserService;
+import sun.util.logging.resources.logging;
 
 @Controller
 public class LoginController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Resource(name = "userService")
 	private IUserService userService;
@@ -30,6 +35,8 @@ public class LoginController {
 	 */
 	@RequestMapping(path = "login", method = RequestMethod.GET)
 	public String loginView(HttpSession session) {
+		
+		logger.debug("logger :::::::::: {}");
 		
 		if(session.getAttribute("USER_INFO") != null) {
 			return "main";

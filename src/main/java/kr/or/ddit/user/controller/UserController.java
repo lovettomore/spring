@@ -86,7 +86,6 @@ public class UserController {
 		pageVO = new PageVO(pageVO.getPage(), pageVO.getPageSize());
 		Map<String, Object> resultMap = userService.userPagingList(pageVO);
 		
-		@SuppressWarnings("unchecked")
 		List<UserVO> userList = (List<UserVO>) resultMap.get("userList");
 		int paginationSize = (Integer)resultMap.get("paginationSize");
 		
