@@ -52,7 +52,7 @@ public class UserDaoTest extends LogicTestEnv{
 		//사용자 정보를 담고있는 vo객체 준비
 		
 		SimpleDateFormat spf = new SimpleDateFormat("yyyy-MM-dd");
-		UserVO userVO = new UserVO("lovememore", "seokyoung", "또교미", "tto1234", "대전시 서구 둔산동", "103-24", "22434", spf.parse("2019-06-20"));
+		UserVO userVO = new UserVO("lovememorezz", "seokyoung", "또교미", "tto1234", "대전시 서구 둔산동", "103-24", "22434", spf.parse("2019-06-20"));
 		
 		/***When***/
 		//userDao.insertUser() 를 실행
@@ -61,8 +61,7 @@ public class UserDaoTest extends LogicTestEnv{
 		/***Then***/
 		//inserCnt(1) 이면 성공
 		assertEquals(1, insertCnt);
-		
-		//userDao.deleteUser(userVO.getUserId());
+		userDao.deleteUser(userVO.getUserId());
 	}
 	
 	/**

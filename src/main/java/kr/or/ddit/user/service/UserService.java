@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.encrypt.kisa.KISA_SHA256;
 import kr.or.ddit.paging.model.PageVO;
@@ -15,6 +16,7 @@ import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.UserVO;
 
+@Transactional()
 @Service
 public class UserService implements IUserService{
 
