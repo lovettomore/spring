@@ -17,9 +17,9 @@ import org.springframework.core.io.ClassPathResource;
 	bean을 3가지를 만듭니다.
 */
 
-@PropertySource("classpath:kr/or/ddit/config/mybatis/db.properties")
+@PropertySource("classpath:kr/or/ddit/config/mybatis/db-dev.properties")
 @Configuration
-public class ApplicationDatasource {
+public class ApplicationDatasource_dev {
 	
 	//얘를 통해서 db.properties를 가지고 올수 있어요
 	@Autowired

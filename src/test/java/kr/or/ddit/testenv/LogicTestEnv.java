@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.or.ddit.config.spring.ApplicationDatasource;
+import kr.or.ddit.config.spring.ApplicationDatasource_dev;
 import kr.or.ddit.config.spring.ApplicationTransaction;
 import kr.or.ddit.config.spring.RootContext;
 
@@ -25,7 +25,7 @@ import kr.or.ddit.config.spring.RootContext;
 //})
 
 //classes 설정파일의 정보를 가지고 있는 녀석들을 classes에 써주면 되요
-@ContextConfiguration(classes = {RootContext.class, ApplicationDatasource.class, ApplicationTransaction.class})
+@ContextConfiguration(classes = {RootContext.class, ApplicationDatasource_dev.class, ApplicationTransaction.class})
 public class LogicTestEnv {
 	
 	@Resource(name = "datasource")

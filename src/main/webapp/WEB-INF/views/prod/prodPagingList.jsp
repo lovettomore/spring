@@ -13,9 +13,25 @@
 
 	<title>LPROD PAGING LIST</title>
 	<%@include file="/WEB-INF/views/common/basicLib.jsp"%>
+	
+	<script>
+		$(document).ready(function(){
+			$("#lprodSelect").on("change", function(){
+				var value = $(this).children("option:selected").val();
+				
+				
+			});
+		});
+		
+	</script>
 </head>
 
 <body>
+
+<form id="lprodGuFrm" action="${cp}/prod/pagingList" method="post">
+	<input type="hidden" name="lprodGu" value="">
+</form>
+
 <div class="container-fluid">
 		<%@include file="/WEB-INF/views/common/sidebar.jsp"%>
 		<div class="row">
@@ -25,6 +41,13 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">PROD</h2>
 						<div class="table-responsive">
+							<div class="">
+								<select name="lprodSelect" id="lprodSelect">
+									<c:forEach items="${lprodList}" var="lprod">
+									<option value="${lprod.lprod_gu}">${lprod.lprod_nm}</option>
+									</c:forEach>
+								</select>
+							</div>
 							<table class="table table-striped">
 								<tr>
 									<th>PROD ID</th>
@@ -61,7 +84,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="${cp}/prod/prodPagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
+											<a href="${cp}/prod/pagingList?page=${pageVO.page-1}&pageSize=${pageVO.pageSize}">«</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
@@ -73,7 +96,7 @@
 										</c:when>
 										<c:otherwise>
 											<li>
-												<a href="${cp}/prod/prodPagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
+												<a href="${cp}/prod/pagingList?page=${i}&pageSize=${pageVO.pageSize}">${i}</a>
 											</li>
 										</c:otherwise>
 									</c:choose>
@@ -85,7 +108,7 @@
 									</c:when>
 									<c:otherwise>
 										<li>
-											<a href="${cp}/prod/prodPagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
+											<a href="${cp}/prod/pagingList?page=${pageVO.page+1}&pageSize=${pageVO.pageSize}">»</a>
 										</li>
 									</c:otherwise>
 								</c:choose>
