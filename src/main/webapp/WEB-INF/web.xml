@@ -119,4 +119,6 @@
 		<servlet-name>springDispatcherServlet2</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
+	<!-- 브랜치 확인용 커밋 -->
 </web-app>
