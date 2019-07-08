@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +22,15 @@ import kr.or.ddit.prod.service.IProdService;
 @Controller
 public class ProdPagingController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(ProdPagingController.class);
+	
 	@Resource(name = "prodService")
 	private IProdService prodService;
 	
 	@Resource(name = "lprodService")
 	private ILprodService lprodService;
 	
-	@RequestMapping("/pagingList")
+	@RequestMapping(path = "/pagingList", method = RequestMethod.GET)
 	public String lprodPagingList(PageVO pageVO, Model model) {
 		
 		pageVO = new PageVO(pageVO.getPage(), pageVO.getPageSize());
@@ -35,7 +39,7 @@ public class ProdPagingController {
 		
 		
 		List<ProdVO> prodList = (List<ProdVO>) resultMap.get("prodList");
-		List<ProdVO> lprodList = (List<ProdVO>) resultMap1.get("lprodList");
+		List<LprodVO> lprodList = (List<LprodVO>) resultMap1.get("lprodList");
 		
 		int paginationSize = (Integer) resultMap.get("paginationSize");
 		
@@ -53,11 +57,27 @@ public class ProdPagingController {
 		pageVO = new PageVO(pageVO.getPage(), pageVO.getPageSize());
 		
 		Map<String, Object> resultMap = prodService.prodPasingList(pageVO);
-		List<ProdVO> prodList = (List<ProdVO>) resultMap.get("prodList");
+		Map<String, Object> resultMap1 = lprodService.lprodPasingList(pageVO);
 		
-		if(lprodGu == prodList.get) {
-			
+		List<ProdVO> prodList = (List<ProdVO>) resultMap.get("prodList");
+		List<LprodVO> lprodList = (List<LprodVO>) resultMap1.get("lprodList");
+		
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		logger.debug("여기까지 오니? log ::::::::::");
+		logger.debug("lprodGu log :::::::: {}", lprodGu);
+		
+		for(ProdVO prod : prodList) {
+			if(lprodGu == prod.getProd_lgu()) {
+				logger.debug("for log 여기까지 오니? ");
+				logger.debug("prod.getProd_lgu() log :::::::: {}", prod.getProd_lgu());
+				
+				model.addAttribute("prodList", prodList);
+			}
 		}
+		
+		model.addAttribute("lprodList", lprodList);
+		model.addAttribute("paginationSize", paginationSize);
+		model.addAttribute("pageVO", pageVO);
 		return "prod/prodPagingList";
 	}
 

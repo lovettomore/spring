@@ -18,8 +18,8 @@
 		$(document).ready(function(){
 			$("#lprodSelect").on("change", function(){
 				var value = $(this).children("option:selected").val();
-				
-				
+				$("#lprodGu").val(value);
+				$("#lprodGuFrm").submit();
 			});
 		});
 		
@@ -29,7 +29,7 @@
 <body>
 
 <form id="lprodGuFrm" action="${cp}/prod/pagingList" method="post">
-	<input type="hidden" name="lprodGu" value="">
+	<input type="hidden" name="lprodGu" id="lprodGu">
 </form>
 
 <div class="container-fluid">

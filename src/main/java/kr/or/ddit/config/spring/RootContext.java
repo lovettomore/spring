@@ -6,7 +6,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.ImportResource;
 
+//설정파일 읽을때 얘도 같이 읽을꺼에요
+@ImportResource({
+				 "classpath:kr/or/ddit/config/spring/application-scheduler.xml",
+				 "classpath:kr/or/ddit/config/spring/application-batch.xml"
+			   })
 
 /*
 	@service, @repository 우리는 얘네만 스캔 할꺼에요.두개의 annotation 대상으로만 스캔을 합니다.

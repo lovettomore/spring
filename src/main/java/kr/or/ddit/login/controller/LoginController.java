@@ -39,7 +39,7 @@ public class LoginController {
 		logger.debug("logger :::::::::: {}");
 		
 		if(session.getAttribute("USER_INFO") != null) {
-			return "main";
+			return "tiles.main";
 		}else {
 			return "login/login";
 		}
@@ -78,7 +78,7 @@ public class LoginController {
 		if(userVO != null && encryptPassword.equals(userVO.getPass())) {
 			rememberMeCookie(userId, rememberme, response);
 			session.setAttribute("USER_INFO", userVO);
-			return "main";
+			return "tiles.main";
 		} else {
 			return "login/login";
 		}
