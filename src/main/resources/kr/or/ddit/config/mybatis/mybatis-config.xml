@@ -10,12 +10,15 @@
 		<typeAlias alias="pageVO" type="kr.or.ddit.paging.model.PageVO"/>
 		<typeAlias alias="lprodVO" type="kr.or.ddit.lprod.model.LprodVO"/>
 		<typeAlias alias="prodVO" type="kr.or.ddit.prod.model.ProdVO"/>
+		<typeAlias alias="cycleVO" type="kr.or.ddit.yogult.model.CycleVO"/>
+		<typeAlias alias="dailyVO" type="kr.or.ddit.yogult.model.DailyVO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/user.xml" />
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/lprod.xml" />
 		<mapper resource="kr/or/ddit/config/mybatis/mapper/prod.xml" />
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/batch.xml" />
 	</mappers>
 	
 </configuration>

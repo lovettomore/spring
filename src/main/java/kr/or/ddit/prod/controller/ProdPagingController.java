@@ -55,9 +55,9 @@ public class ProdPagingController {
 		Map<String, Object> resultMap = prodService.prodPasingList(pageVO);
 		List<ProdVO> prodList = (List<ProdVO>) resultMap.get("prodList");
 		
-		if(lprodGu == prodList.get) {
-			
-		}
+//		if(lprodGu == prodList.get) {
+//			
+//		}
 		return "prod/prodPagingList";
 	}
 
